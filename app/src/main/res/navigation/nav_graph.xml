@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/binListFragment">
+
+    <fragment
+        android:id="@+id/binSearchFragment"
+        android:name="com.example.shiftapp.presentation.binSearchFragment.BinSearchFragment"
+        android:label="BinSearchFragment"
+        tools:layout="@layout/bin_search_fragment">
+        <action
+            android:id="@+id/actionToBinDetailsFragment"
+            app:destination="@id/binDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/binDetailsFragment"
+        android:name="com.example.shiftapp.presentation.binDetailsFragment.BinDetailsFragment"
+        android:label="BinDetailsFragment"
+        tools:layout="@layout/bin_details_fragment">
+        <argument
+            android:name="currentBinList"
+            app:argType="com.example.shiftapp.presentation.model.BinUI" />
+        <argument
+            android:name="binNumber"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="binId"
+            app:argType="java.util.UUID"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/binListFragment"
+        android:name="com.example.shiftapp.presentation.binList.BinListFragment"
+        android:label="BinListFragment"
+        tools:layout="@layout/fragment_bin_list">
+        <action
+            android:id="@+id/actionBinListFragmentTobinDetailsFragment"
+            app:destination="@id/binDetailsFragment" />
+        <action
+            android:id="@+id/actionToBinSearchFragment"
+            app:destination="@id/binSearchFragment" />
+    </fragment>
+</navigation>
