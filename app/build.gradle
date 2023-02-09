@@ -1,11 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
 
 android {
     namespace 'com.example.shiftapp'
     compileSdk 33
+
+    def BASE_URL = "BASE_URL"
+    def DATABASE_NAME = "DATABASE_NAME"
 
     defaultConfig {
         applicationId "com.example.shiftapp"
@@ -13,7 +20,8 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
+        buildConfigField "String", BASE_URL, "\"https://lookup.binlist.net/\""
+        buildConfigField "String", DATABASE_NAME, "\"bin-database\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -30,15 +38,63 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
+    kapt {
+        correctErrorTypes true
+    }
 }
 
+def hiltVersion = "2.44.2"
+def retrofitVersion = "2.9.0"
+def okHttpVersion = "4.9.3"
+def moshiVersion = "1.13.0"
+def coroutinesVersion = "1.6.1"
+def navGraphVersion = "2.5.3"
+def bindingDelegateVersion = "1.5.6"
+def roomVersion = "2.5.0"
+def materialVersion = "1.8.0"
+
 dependencies {
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$navGraphVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navGraphVersion"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$navGraphVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navGraphVersion"
+
+    implementation "com.github.kirich1409:viewbindingpropertydelegate:$bindingDelegateVersion"
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    implementation "com.google.android.material:material:$materialVersion"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.fragment:fragment-ktx:1.5.5'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.8.0'
+
     testImplementation 'junit:junit:4.13.2'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

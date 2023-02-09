@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">shiftApp</string>
+    <string name="app_name">ShiftApp</string>
+    <string name="enter_bin_number">Please enter BIN number</string>
+    <string name="enter_button">enter</string>
+    <string name="your_bin_number">your BIN number</string>
+    <string name="card_number">Card number:</string>
+    <string name="length">length: %1$s</string>
+    <string name="luhn">luhn: %1$s</string>
+    <string name="scheme">Scheme: %1$s</string>
+    <string name="type">Type: %1$s</string>
+    <string name="brand">Brand: %1$s</string>
+    <string name="prepaid">Prepaid: %1$s</string>
+    <string name="country">Country:</string>
+    <string name="numeric">Numeric: %1$s</string>
+    <string name="alpha2">Alpha2: %1$s</string>
+    <string name="name">Name: %1$s</string>
+    <string name="bank_name">Name: %1$s</string>
+    <string name="longitude">Longitude: %1$s</string>
+    <string name="bank">Bank:</string>
+    <string name="phone">Phone: %1$s</string>
+    <string name="city">City: %1$s</string>
+    <string name="url">Url: %1$s</string>
+    <string name="emoji">Emoji: %1$s</string>
+    <string name="latitude">Latitude: %1$s</string>
+    <string name="currency">Currency: %1$s</string>
+    <string name="new_response">New Response</string>
+    <string name="response_date">Response Date</string>
+    <string name="unknown">Unknown</string>
 </resources>
