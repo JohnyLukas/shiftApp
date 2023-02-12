@@ -20,4 +20,3 @@
   * Hilt
   * Room
   * Navgraph
-  * BindinDelegate
